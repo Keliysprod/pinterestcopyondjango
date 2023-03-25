@@ -1,0 +1,21 @@
+#textonpin {
+    margin-top: 50px;
+}
+.imgcard {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.containerimg {
+    margin-top: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+    column-count: 4;
+    column-gap: 5px;
+}
+  
+
+.image {
+    margin: 4px;
+    max-width: 100%;
+    border-radius: 15px;
+}

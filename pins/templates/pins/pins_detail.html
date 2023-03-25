@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pin
+{% endblock %}
+
+
+{% block content %}
+    <div class="ps-5 pe-5 mt-5 mx-auto" style="max-width: 1000px;">
+        <div class="card mb-3 ">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ object.image.url }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Pin Name:</h5>
+                        <p class="card-text">{{ object.pic_name }}</p>
+
+                        <h5 class="card-title">Pin Description:</h5>
+                        <p class="card-text">{{ object.pic_description }}</p>
+
+                        <h5 class="card-title">Author:</h5>
+                        <p class="card-text">{{ object.user }}</p>
+
+                        <h5 class="card-title">Category:</h5>
+                        <p class="badge bg-dark text-wrap">
+                            {{ object.category }}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p class="fs-4">Комментарии({{object.pins_comment.all.count}}):</p>
+        {% for object in pin.pins_comment.all %}
+            <div class="border border-info p-2 mb-3">
+                Автор:{{object.user}} <br>
+                {{object.text}} <br>
+            </div>
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+            <br>
+            <form action="" id="add_form" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+        {% else %}
+            <br>
+            <p class="text-danger fs-3 text-center">Зарегестируйтесь что-бы оставлять Комментарии</p>
+        {% endif %}
+    </div>
+{% endblock %}

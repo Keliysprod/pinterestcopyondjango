@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pins
+{% endblock %}
+
+{% block content %}
+    
+    <div class="containerimg">
+        <div class="">
+            {% for object in all_pins%}
+                <a href="{{ object.get_absolute_url }}">
+                    <img class="image" src="{{ object.image.url }}" width="90%">
+                </a>
+                
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+            <p class="text-center fw-semibold fs-1">
+                Хочешь Больше? Добавь Свои <a class="text-decoration-none" href="{% url 'createapin' %}">Идеи</a>
+            </p>
+        {% else %}
+        <p class="text-center fw-semibold fs-1">
+            Что-Бы Довавить Свою Идею <a class="text-decoration-none" href="{% url 'registrations' %}">Зарегистрируйтесь</a>
+        </p>
+        {% endif %}
+    </div>
+{% endblock %}

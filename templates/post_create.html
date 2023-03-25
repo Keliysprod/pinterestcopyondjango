@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Добавь Свою Картинку В Pinterest
+{% endblock %}
+
+{% block content %}
+    <div class="mx-auto">
+        <h1>Создать Пост:</h1>
+        <form class="text-center" method="post" enctype="multipart/form-data"> 
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Опубликовать</button>
+        </form>
+    </div>
+{% endblock %}

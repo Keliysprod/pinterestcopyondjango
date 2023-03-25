@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Вход
+{% endblock %}
+
+{% block content %}
+    <div class="">
+        <p class="mx-auto text-center">*Зополните поля что-бы Войти в Аккаунт:</p>
+        <form method="post" action="">
+            <table class="mx-auto">
+                {{form.as_table}}
+                {% csrf_token %}
+            </table>
+            <tr>
+                <td>
+                    &nbsp
+                </td>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group mx-auto">
+
+                        <input class="btn btn-sm btn-outline-secondary" type="submit" value="Login">
+
+                    </div>
+                </div>
+            </tr>
+            <p></p>
+            <p class="text-center">Еще нет аккаунта? <a href="{% url 'registrations'%}">Зарегестрироваться</a></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pins
+{% endblock %}
+
+{% block content %}
+    <p class="text-center fw-semibold fs-2">
+        Ищи среди тысячи идей
+    </p>
+    <form class="text-center" action="{% url 'search' %}" method="get">
+        <input  type="search" name="q" placeholder="Найти по имени" aria-label="search">
+        <button type="submit">Поиск</button>
+    </form>
+
+    <div class="containerimg">
+        <div class="">
+            {% for object in news%}
+                <a href="{{ object.get_absolute_url }}">
+                    <img class="image" src="{{ object.image.url }}" width="90%">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="containerimg">
+        <div class="">
+            {% for object in pins%}
+                <a href="{{ object.get_absolute_url }}">
+                    <img class="image" src="{{ object.image.url }}" width="90%">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
